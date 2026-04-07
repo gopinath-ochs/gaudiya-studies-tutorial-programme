@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gaudiya Studies Tutorial Programme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ochre: #8b1a1a;
+      --deep: #1a2744;
+      --cream: #f5f5f5;
+      --gold-light: #d4a0a0;
+      --text: #1a1a1a;
+      --muted: #666666;
+      --border: #d0d0d0;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'EB Garamond', Georgia, serif; background: var(--cream); color: var(--text); min-height: 100vh; font-size: 17px; line-height: 1.7; }
+    header { background: var(--deep); padding: 2.5rem 2rem 2rem; text-align: center; }
+    .header-inner { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+    header img.logo { height: 80px; display: block; }
+    .header-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, #8b1a1a, transparent); }
+    header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 500; color: var(--cream); letter-spacing: 0.06em; line-height: 1.3; }
+    header .term-badge { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--gold-light); letter-spacing: 0.08em; }
+    .page-body { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; display: flex; flex-direction: column; gap: 3.5rem; }
+    .section-title { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ochre); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .content-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .content-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .block-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 0.85rem; }
+    .block-body { color: #4a3a25; font-size: 0.97rem; line-height: 1.85; }
+    .block-body p { margin-bottom: 0.75rem; }
+    .block-body p:last-child { margin-bottom: 0; }
+    .block-body ul { padding-left: 1.4rem; margin-bottom: 0.75rem; }
+    .block-body ul li { margin-bottom: 0.35rem; }
+    .date-list { display: flex; flex-direction: column; }
+    .date-item { display: flex; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px dotted var(--border); }
+    .date-item:last-child { border-bottom: none; }
+    .date-label { font-weight: 600; color: var(--ochre); min-width: 90px; font-size: 0.9rem; font-family: 'Cinzel', serif; letter-spacing: 0.04em; padding-top: 0.05rem; }
+    .date-text { color: #4a3a25; font-size: 0.97rem; line-height: 1.7; }
+    .schedule-wrap { overflow-x: auto; border: 1px solid var(--border); background: var(--white); }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: var(--deep); }
+    thead th { padding: 0.9rem 1rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr.special-row { background: #eef1f7; }
+    td { padding: 0.85rem 1rem; vertical-align: middle; font-size: 0.95rem; }
+    .td-week { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 600; color: var(--muted); letter-spacing: 0.1em; white-space: nowrap; }
+    .td-date { white-space: nowrap; color: var(--ochre); font-size: 0.9rem; font-weight: 500; }
+    .td-topic { font-weight: 500; color: var(--text); }
+    .td-scholar { display: block; font-size: 0.82rem; color: var(--muted); font-style: italic; font-weight: 400; margin-top: 0.15rem; }
+    .scholars-grid { display: flex; flex-direction: column; border: 1px solid var(--border); background: var(--white); }
+    .scholar-item { padding: 1.5rem 1.25rem; border-bottom: 1px solid var(--border); }
+    .scholar-item:last-child { border-bottom: none; }
+    .scholar-header { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.85rem; }
+    .scholar-devname { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); }
+    .scholar-acadname { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+    .scholar-topics { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ochre); text-transform: uppercase; margin-top: 0.1rem; }
+    .scholar-bio { font-size: 0.93rem; color: #4a3a25; line-height: 1.85; }
+    footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); font-style: italic; letter-spacing: 0.04em; }
+    @media (max-width: 600px) { .td-week, .td-date { font-size: 0.75rem; } td { padding: 0.65rem 0.6rem; } thead th { padding: 0.75rem 0.6rem; } .date-label { min-width: 70px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img class="logo" src="https://ochs.org.uk/wp-content/uploads/2020/06/cropped-OCHS-Feb-Logo-6.png" alt="OCHS Logo" onerror="this.src='https://ochs.org.uk/wp-content/uploads/2020/01/OCHS-logo.png'">
+    <div class="header-rule"></div>
+    <h1>The Gaudiya Studies Tutorial Programme</h1>
+    <span class="term-badge">Trinity Term &middot; 2025</span>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <section>
+    <div class="section-title">Programme Overview</div>
+
+    <div class="content-block">
+      <div class="block-title">About the Programme</div>
+      <div class="block-body">
+        <p>The Gaudiya Studies Programme is designed to help you learn through self-study and through dialogue with a scholar who is an expert on the topic. Each week, you will meet with a tutor to discuss a particular aspect of the Gau&#7693;&#299;ya tradition, after you have invested time into reading and exploring the topic by yourself.</p>
+        <p>The conversation will be informed and you will come to each session not just with questions, but also with information and ideas that allow you to get much more out of each session.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Weekly Time Commitment</div>
+      <div class="block-body">
+        <p>Previous students have recommended setting aside a total of <strong>10&ndash;12 hours per week</strong>, broken down as follows:</p>
+        <ul>
+          <li><strong>6&ndash;8 hours</strong> &mdash; Reading and reflecting on the week's topic</li>
+          <li><strong>2 hours</strong> &mdash; Cohort Discussion Time</li>
+          <li><strong>2 hours</strong> &mdash; Weekly Tutorial with a Scholar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Elements of the Programme</div>
+      <div class="block-body">
+        <p><strong>Tutorials</strong> &mdash; The weekly interactive learning and teaching space with a scholar.</p>
+        <p><strong>Community Time</strong> &mdash; The cohort meets between tutorials to review their readings, explore topics together, and discuss ideas. A minimum of 2 hours per week is recommended, with days and timings set by the cohort. No scholars attend these conversations.</p>
+        <p><strong>Readings</strong> &mdash; Each scholar has provided a list of topical and relevant readings, found within their respective folders on the Google Drive.</p>
+        <p><strong>Presentation</strong> &mdash; Students desiring certification should make a 5&ndash;7 minute presentation reflecting on any topic within the programme or its impact on them, followed by 5 minutes for questions from the cohort.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Important Dates</div>
+      <div class="block-body">
+        <div class="date-list">
+          <div class="date-item">
+            <span class="date-label">18 Apr</span>
+            <span class="date-text">Opening Conversation &mdash; Introduction to the course, meeting each other, and reviewing all course elements. Please hold 1.5 hours.</span>
+          </div>
+          <div class="date-item">
+            <span class="date-label">2 May</span>
+            <span class="date-text">First Tutorial</span>
+          </div>
+          <div class="date-item">
+            <span class="date-label">20 Jun</span>
+            <span class="date-text">Final Tutorial</span>
+          </div>
+          <div class="date-item">
+            <span class="date-label">27 Jun</span>
+            <span class="date-text">Presentations &amp; Closing (2.5 hours)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Technology &amp; Platforms</div>
+      <div class="block-body">
+        <p><strong>Zoom</strong> &mdash; All tutorials, cohort discussions, and online meetings use a single dedicated link. Save it somewhere accessible.</p>
+        <p><strong>Google Drive</strong> &mdash; Contains all weekly readings (mostly PDF), and a Google Document per session for you to submit pre-tutorial questions. Scholars may review this document before the session to shape their tutorial.</p>
+        <p><strong>WhatsApp / Email</strong> &mdash; As a group, create a quick communication channel for updates, changes, and reminders.</p>
+        <p><em>Please note: no recordings will be made during tutorials, and students are asked not to record any tutorials.</em></p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Recommended Books</div>
+      <div class="block-body">
+        <p>While all materials are provided digitally, you may wish to acquire physical copies of the following books. The first is used across several sessions; the others are used extensively in individual sessions.</p>
+        <ul>
+          <li>Ravi M. Gupta (ed.), <em>Caitanya Vai&#7779;&#7751;ava Philosophy: Tradition, Reason and Devotion</em>. Ashgate/Routledge, 2014. ISBN 9781138248854</li>
+          <li>Ravi M. Gupta &amp; Kenneth R. Valpey (ed.), <em>The Bh&#257;gavata Pur&#257;&#7751;a: Sacred Text and Living Tradition</em>. Columbia University Press, 2013. ISBN 9780231169011</li>
+          <li>Joseph O'Connell, <em>Caitanya Vai&#7779;&#7751;avism in Bengal</em>. Routledge, 2018. ISBN 9780367583538</li>
+          <li>M&aring;ns Broo, <em>As Good as God: The Guru in Gau&#7693;&#299;ya Vai&#7779;&#7751;avism</em>. &Aring;bo Akademi University Press, 2003. ISBN 9517651325</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-title">Support &amp; Contacts</div>
+      <div class="block-body">
+        <div class="date-list">
+          <div class="date-item">
+            <span class="date-label" style="min-width:160px;">Shaunaka Rishi Das</span>
+            <span class="date-text">OCHS Director</span>
+          </div>
+          <div class="date-item">
+            <span class="date-label" style="min-width:160px;">Gopinathacarya Das</span>
+            <span class="date-text">Academic Director</span>
+          </div>
+          <div class="date-item">
+            <span class="date-label" style="min-width:160px;">Gokul Raj Das</span>
+            <span class="date-text">Student Manager</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Trinity Term Schedule</div>
+    <div class="schedule-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Session</th>
+            <th>Date</th>
+            <th>Scholar &amp; Topic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="special-row">
+            <td class="td-week">Intro Call</td>
+            <td class="td-date">18 Apr</td>
+            <td class="td-topic">Opening Conversation</td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 1</td>
+            <td class="td-date">2 May</td>
+            <td class="td-topic">Context <span class="td-scholar">Gop&#299;n&#257;th&#257;c&#257;rya D&#257;sa &middot; Dr. Rembert Lutjeharms</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 2</td>
+            <td class="td-date">9 May</td>
+            <td class="td-topic">Guru <span class="td-scholar">Bh&#7771;gup&#257;da D&#257;sa &middot; Dr. M&aring;ns Broo</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 3</td>
+            <td class="td-date">16 May</td>
+            <td class="td-topic">Temples &amp; Deities <span class="td-scholar">K&#7771;&#7779;&#7751;a K&#7779;etra Swami &middot; Dr. Kenneth R. Valpey</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 4</td>
+            <td class="td-date">23 May</td>
+            <td class="td-topic">ISKCON Preaching Reviewed <span class="td-scholar">Shaunaka Rishi Das</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 5</td>
+            <td class="td-date">30 May</td>
+            <td class="td-topic">Bh&#257;gavata Pur&#257;&#7751;a <span class="td-scholar">R&#257;dhik&#257; Rama&#7751;a D&#257;sa &middot; Prof. Ravi M. Gupta</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 6</td>
+            <td class="td-date">6 Jun</td>
+            <td class="td-topic">S&#257;dhana <span class="td-scholar">Bh&#7771;gup&#257;da D&#257;sa &middot; Dr. M&aring;ns Broo</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 7</td>
+            <td class="td-date">13 Jun</td>
+            <td class="td-topic">Institution &amp; Community <span class="td-scholar">Gop&#299;n&#257;th&#257;c&#257;rya D&#257;sa &middot; Dr. Rembert Lutjeharms</span></td>
+          </tr>
+          <tr>
+            <td class="td-week">Week 8</td>
+            <td class="td-date">20 Jun</td>
+            <td class="td-topic">Bhakti &amp; Rasa <span class="td-scholar">K&#7771;&#7779;&#7751;a&#347;ara&#7751;a D&#257;sa &middot; Prof. Kiyokazu Okita</span></td>
+          </tr>
+          <tr class="special-row">
+            <td class="td-week">Closing Call</td>
+            <td class="td-date">27 Jun</td>
+            <td class="td-topic">Presentations &amp; Closing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">Scholars This Term</div>
+    <div class="scholars-grid">
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">Gop&#299;n&#257;th&#257;c&#257;rya D&#257;sa</span>
+          <span class="scholar-acadname">Dr. Rembert Lutjeharms</span>
+          <span class="scholar-topics">Context &middot; Institution &amp; Community</span>
+        </div>
+        <div class="scholar-bio">Gop&#299;n&#257;th&#257;c&#257;rya (Dr. Rembert Lutjeharms) is the Librarian and a research lecturer at the Oxford Centre for Hindu Studies. He is the author of <em>A Vai&#7779;&#7751;ava Poet in Early Modern Bengal: Kavikar&#7751;ap&#363;ra's Splendour of Speech</em> (Oxford University Press, 2018), and is an editor of the <em>Journal of Hindu Studies</em>. Together with Dr. Kiyokazu Okita (Sofia University, Tokyo), he leads a research project on the early history of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism: <em>The Gosv&#257;m&#299; Era: The Founding of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism in Early Modern South Asia</em>. He is also a member of ISKCON's &#346;&#257;stric Advisory Committee. His main research interests are Sanskrit devotional poetry and poetics, the history of Ved&#257;nta, and the early intellectual history of the Gau&#7693;&#299;ya tradition.</div>
+      </div>
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">Bh&#7771;gup&#257;da D&#257;sa</span>
+          <span class="scholar-acadname">Dr. M&aring;ns Broo</span>
+          <span class="scholar-topics">Guru &middot; S&#257;dhana</span>
+        </div>
+        <div class="scholar-bio">Bh&#7771;gup&#257;da (Dr. M&aring;ns Broo) is a university researcher in comparative religion at &Aring;bo Akademi University, Finland. His main research interests include yoga &mdash; both its history and contemporary forms &mdash; and the intersections between Vai&#7779;&#7751;avism and Tantrism in pre-modern Bengal. He is the author of <em>As Good as God: The Guru in Gau&#7693;&#299;ya Vai&#7779;&#7751;avism</em> (&Aring;bo Akademi University Press, 2003). He has critically edited and translated the <em>R&#257;dh&#257; Tantra</em> (Routledge, 2017), a publication which won the Donner Institute's Research Prize 2017, and has translated the Upani&#7779;ads into Swedish. He is currently engaged in compiling a critical edition and translation of the Gau&#7693;&#299;ya Vai&#7779;&#7751;ava ritual compilation <em>Hari-bhakti-vil&#257;sa</em>.</div>
+      </div>
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">K&#7771;&#7779;&#7751;a K&#7779;etra Swami</span>
+          <span class="scholar-acadname">Dr. Kenneth R. Valpey</span>
+          <span class="scholar-topics">Temples &amp; Deities</span>
+        </div>
+        <div class="scholar-bio">K&#7771;&#7779;&#7751;a K&#7779;etra Swami received a D.Phil. from the University of Oxford (St. Cross College) for his dissertation on Caitanya Vai&#7779;&#7751;ava image worship, published as <em>Attending Krsna's Image: Caitanya Vaisnava Murti-seva as Devotional Truth</em> (Routledge, 2006). He is a Research Fellow of the Oxford Centre for Hindu Studies and has taught at Bhaktivedanta College, Radhadesh since 2002. He has taught survey courses in Indian religions at the University of Florida and at Chinese University of Hong Kong, and has lectured at several universities in China. He served as ISKCON's GBC minister for Deity worship from 1995 to 2005 and is currently a member of the &#346;&#257;stric Advisory Committee.</div>
+      </div>
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">Shaunaka Rishi Das</span>
+          <span class="scholar-acadname">OCHS Director</span>
+          <span class="scholar-topics">ISKCON Preaching Reviewed</span>
+        </div>
+        <div class="scholar-bio">Shaunaka Rishi Das is the Director and founder of the Oxford Centre for Hindu Studies (OCHS), and Hindu Chaplain to the University of Oxford. He was Chairman of ISKCON Communications Europe from 1991&ndash;2003, an executive member of ISKCON's Ministry of Educational Development from 1996&ndash;2010, and a trustee of Bhaktivedanta College in Belgium. He is also a frequent broadcaster on BBC Radio 4. His interests include education, comparative theology, communication, and leadership.</div>
+      </div>
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">R&#257;dhik&#257; Rama&#7751;a D&#257;sa</span>
+          <span class="scholar-acadname">Prof. Ravi M. Gupta</span>
+          <span class="scholar-topics">Bh&#257;gavata Pur&#257;&#7751;a</span>
+        </div>
+        <div class="scholar-bio">R&#257;dhik&#257; Rama&#7751;a (Prof. Ravi M. Gupta) holds the Charles Redd Chair of Religious Studies at Utah State University. He is the author of <em>The Caitanya Vai&#7779;&#7751;ava Ved&#257;nta of J&#299;va Gosv&#257;m&#299;</em> (Routledge, 2007), co-editor of <em>The Bh&#257;gavata Pur&#257;&#7751;a: Sacred Text and Living Tradition</em> (Columbia University Press, 2013), editor of <em>Caitanya Vai&#7779;&#7751;ava Philosophy: Tradition Reason and Devotion</em> (Ashgate, 2014), and co-author of <em>The Bh&#257;gavata Pur&#257;&#7751;a: Selected Readings</em> (Columbia University Press, 2016). Together with Dr. Kenneth R. Valpey he leads the OCHS's Bh&#257;gavata Pur&#257;&#7751;a Research Project. He is also a member of ISKCON's &#346;&#257;stric Advisory Committee.</div>
+      </div>
+
+      <div class="scholar-item">
+        <div class="scholar-header">
+          <span class="scholar-devname">K&#7771;&#7779;&#7751;a&#347;ara&#7751;a D&#257;sa</span>
+          <span class="scholar-acadname">Prof. Kiyokazu Okita</span>
+          <span class="scholar-topics">Bhakti &amp; Rasa</span>
+        </div>
+        <div class="scholar-bio">Kiyokazu Okita is an assistant professor at the Faculty of Liberal Arts, Sophia University, and a research fellow at the OCHS, as well as visiting faculty at the Center for the Study of Hindu Traditions, University of Florida. He obtained his D.Phil. from the Faculty of Theology and Religion, University of Oxford in 2011. His doctoral thesis focuses on Vai&#7779;&#7751;ava Ved&#257;nta in early modern North India, and was published as <em>Hindu Theology in Early Modern South Asia</em> (Oxford University Press, 2014). He was a JSPS postdoctoral research fellow at Kyoto University, a visiting research fellow at the University of Hamburg, and held a competitive research position at the Hakubi Center for Advanced Research, Kyoto University (2013&ndash;2017). Together with Dr. Rembert Lutjeharms at OCHS, he leads the collaborative research project <em>The Gosv&#257;m&#299; Era: The Founding of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism in Early Modern South Asia</em>.</div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Oxford Centre for Hindu Studies &nbsp;&middot;&nbsp; The Gaudiya Studies Tutorial Programme &nbsp;&middot;&nbsp; Trinity Term 2025
+</footer>
+
+</body>
+</html>
