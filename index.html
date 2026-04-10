@@ -53,10 +53,11 @@
     .td-topic { font-weight: 500; color: var(--text); }
     .td-scholar { display: block; font-size: 0.82rem; color: var(--muted); font-style: italic; font-weight: 400; margin-top: 0.15rem; }
     .scholars-grid { display: flex; flex-direction: column; border: 1px solid var(--border); background: var(--white); }
-    .scholar-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; margin-bottom: 1rem; border: 2px solid var(--border); }
+    .scholar-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--border); flex-shrink: 0; }
     .scholar-item { padding: 1.5rem 1.25rem; border-bottom: 1px solid var(--border); }
     .scholar-item:last-child { border-bottom: none; }
-    .scholar-header { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.85rem; }
+    .scholar-header { display: flex; flex-direction: row; align-items: center; gap: 1rem; margin-bottom: 0.85rem; }
+    .scholar-header-text { display: flex; flex-direction: column; gap: 0.15rem; }
     .scholar-devname { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); }
     .scholar-acadname { font-size: 0.85rem; color: var(--muted); font-style: italic; }
     .scholar-topics { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ochre); text-transform: uppercase; margin-top: 0.1rem; }
@@ -251,60 +252,73 @@
     <div class="scholars-grid">
 
       <div class="scholar-item">
-        <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2021/03/Rembert-profile-photo2-683x1024.jpg" alt="Scholar photo">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2021/03/Rembert-profile-photo2-683x1024.jpg" alt="Scholar photo">
+          <div class="scholar-header-text">
           <span class="scholar-devname">Gop&#299;n&#257;th&#257;c&#257;rya D&#257;sa</span>
           <span class="scholar-acadname">Dr. Rembert Lutjeharms</span>
           <span class="scholar-topics">Context &middot; Institution &amp; Community</span>
+        </div>
         </div>
         <div class="scholar-bio">Gop&#299;n&#257;th&#257;c&#257;rya (Dr. Rembert Lutjeharms) is the Librarian and a research lecturer at the Oxford Centre for Hindu Studies. He is the author of <em>A Vai&#7779;&#7751;ava Poet in Early Modern Bengal: Kavikar&#7751;ap&#363;ra's Splendour of Speech</em> (Oxford University Press, 2018), and is an editor of the <em>Journal of Hindu Studies</em>. Together with Dr. Kiyokazu Okita (Sofia University, Tokyo), he leads a research project on the early history of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism: <em>The Gosv&#257;m&#299; Era: The Founding of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism in Early Modern South Asia</em>. He is also a member of ISKCON's &#346;&#257;stric Advisory Committee. His main research interests are Sanskrit devotional poetry and poetics, the history of Ved&#257;nta, and the early intellectual history of the Gau&#7693;&#299;ya tradition.</div>
       </div>
 
       <div class="scholar-item">
-        <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/06/Njbh0ZAYRwO5kUMxy2YGYw_thumb_23ed.jpg" alt="Scholar photo">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/06/Njbh0ZAYRwO5kUMxy2YGYw_thumb_23ed.jpg" alt="Scholar photo">
+          <div class="scholar-header-text">
           <span class="scholar-devname">Bh&#7771;gup&#257;da D&#257;sa</span>
           <span class="scholar-acadname">Dr. M&aring;ns Broo</span>
           <span class="scholar-topics">Guru &middot; S&#257;dhana</span>
+        </div>
         </div>
         <div class="scholar-bio">Bh&#7771;gup&#257;da (Dr. M&aring;ns Broo) is a university researcher in comparative religion at &Aring;bo Akademi University, Finland. His main research interests include yoga &mdash; both its history and contemporary forms &mdash; and the intersections between Vai&#7779;&#7751;avism and Tantrism in pre-modern Bengal. He is the author of <em>As Good as God: The Guru in Gau&#7693;&#299;ya Vai&#7779;&#7751;avism</em> (&Aring;bo Akademi University Press, 2003). He has critically edited and translated the <em>R&#257;dh&#257; Tantra</em> (Routledge, 2017), a publication which won the Donner Institute's Research Prize 2017, and has translated the Upani&#7779;ads into Swedish. He is currently engaged in compiling a critical edition and translation of the Gau&#7693;&#299;ya Vai&#7779;&#7751;ava ritual compilation <em>Hari-bhakti-vil&#257;sa</em>.</div>
       </div>
 
       <div class="scholar-item">
-        <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/08/Dr_Kenneth_R_Valpey-200x300-1-e1598808193783.jpg" alt="Scholar photo">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/08/Dr_Kenneth_R_Valpey-200x300-1-e1598808193783.jpg" alt="Scholar photo">
+          <div class="scholar-header-text">
           <span class="scholar-devname">K&#7771;&#7779;&#7751;a K&#7779;etra Swami</span>
           <span class="scholar-acadname">Dr. Kenneth R. Valpey</span>
           <span class="scholar-topics">Temples &amp; Deities</span>
+        </div>
         </div>
         <div class="scholar-bio">K&#7771;&#7779;&#7751;a K&#7779;etra Swami received a D.Phil. from the University of Oxford (St. Cross College) for his dissertation on Caitanya Vai&#7779;&#7751;ava image worship, published as <em>Attending Krsna's Image: Caitanya Vaisnava Murti-seva as Devotional Truth</em> (Routledge, 2006). He is a Research Fellow of the Oxford Centre for Hindu Studies and has taught at Bhaktivedanta College, Radhadesh since 2002. He has taught survey courses in Indian religions at the University of Florida and at Chinese University of Hong Kong, and has lectured at several universities in China. He served as ISKCON's GBC minister for Deity worship from 1995 to 2005 and is currently a member of the &#346;&#257;stric Advisory Committee.</div>
       </div>
 
       <div class="scholar-item">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2022/07/6C342757-8787-4998-A8B6-32E98BAEBF4E_1_201_a-1024x1024.jpeg" alt="Shaunaka Rishi Das">
+          <div class="scholar-header-text">
           <span class="scholar-devname">Shaunaka Rishi Das</span>
           <span class="scholar-acadname">OCHS Director</span>
           <span class="scholar-topics">ISKCON Preaching Reviewed</span>
+        </div>
         </div>
         <div class="scholar-bio">Shaunaka Rishi Das is the Director and founder of the Oxford Centre for Hindu Studies (OCHS), and Hindu Chaplain to the University of Oxford. He was Chairman of ISKCON Communications Europe from 1991&ndash;2003, an executive member of ISKCON's Ministry of Educational Development from 1996&ndash;2010, and a trustee of Bhaktivedanta College in Belgium. He is also a frequent broadcaster on BBC Radio 4. His interests include education, comparative theology, communication, and leadership.</div>
       </div>
 
       <div class="scholar-item">
-        <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2024/09/Ravi-Gupta.png" alt="Scholar photo">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2024/09/Ravi-Gupta.png" alt="Scholar photo">
+          <div class="scholar-header-text">
           <span class="scholar-devname">R&#257;dhik&#257; Rama&#7751;a D&#257;sa</span>
           <span class="scholar-acadname">Prof. Ravi M. Gupta</span>
           <span class="scholar-topics">Bh&#257;gavata Pur&#257;&#7751;a</span>
+        </div>
         </div>
         <div class="scholar-bio">R&#257;dhik&#257; Rama&#7751;a (Prof. Ravi M. Gupta) holds the Charles Redd Chair of Religious Studies at Utah State University. He is the author of <em>The Caitanya Vai&#7779;&#7751;ava Ved&#257;nta of J&#299;va Gosv&#257;m&#299;</em> (Routledge, 2007), co-editor of <em>The Bh&#257;gavata Pur&#257;&#7751;a: Sacred Text and Living Tradition</em> (Columbia University Press, 2013), editor of <em>Caitanya Vai&#7779;&#7751;ava Philosophy: Tradition Reason and Devotion</em> (Ashgate, 2014), and co-author of <em>The Bh&#257;gavata Pur&#257;&#7751;a: Selected Readings</em> (Columbia University Press, 2016). Together with Dr. Kenneth R. Valpey he leads the OCHS's Bh&#257;gavata Pur&#257;&#7751;a Research Project. He is also a member of ISKCON's &#346;&#257;stric Advisory Committee.</div>
       </div>
 
       <div class="scholar-item">
-        <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/08/okita-e1598808320187.jpg" alt="Scholar photo">
         <div class="scholar-header">
+          <img class="scholar-photo" src="https://ochs.org.uk/wp-content/uploads/2020/08/okita-e1598808320187.jpg" alt="Scholar photo">
+          <div class="scholar-header-text">
           <span class="scholar-devname">K&#7771;&#7779;&#7751;a&#347;ara&#7751;a D&#257;sa</span>
           <span class="scholar-acadname">Prof. Kiyokazu Okita</span>
           <span class="scholar-topics">Bhakti &amp; Rasa</span>
+        </div>
         </div>
         <div class="scholar-bio">Kiyokazu Okita is an assistant professor at the Faculty of Liberal Arts, Sophia University, and a research fellow at the OCHS, as well as visiting faculty at the Center for the Study of Hindu Traditions, University of Florida. He obtained his D.Phil. from the Faculty of Theology and Religion, University of Oxford in 2011. His doctoral thesis focuses on Vai&#7779;&#7751;ava Ved&#257;nta in early modern North India, and was published as <em>Hindu Theology in Early Modern South Asia</em> (Oxford University Press, 2014). He was a JSPS postdoctoral research fellow at Kyoto University, a visiting research fellow at the University of Hamburg, and held a competitive research position at the Hakubi Center for Advanced Research, Kyoto University (2013&ndash;2017). Together with Dr. Rembert Lutjeharms at OCHS, he leads the collaborative research project <em>The Gosv&#257;m&#299; Era: The Founding of Gau&#7693;&#299;ya Vai&#7779;&#7751;avism in Early Modern South Asia</em>.</div>
       </div>
